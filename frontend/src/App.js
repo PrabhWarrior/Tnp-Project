@@ -4,6 +4,8 @@ import CreatePost from './components/CreatePost';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Contact from './components/Contact';
+import Home from './components/Home';
+import Post from './components/Post';
 
 function App() {
   const [display, setDisplay] = useState('hidden');
@@ -16,9 +18,15 @@ function App() {
   }
   return (
     <Router>
-      <Navbar exact path="/" title="Training and Placement Cell" />
+      <Navbar title="Training and Placement Cell" />
       <Routes>
           <Route exact path="/create-post" element={<CreatePost/>}/>
+        </Routes>
+      <Routes>
+          <Route exact path="/" element={<Home/>}/>
+        </Routes>
+      <Routes>
+          <Route exact path='/post/:id' element={<Post/>}/>
         </Routes>
       <Routes>
           <Route exact path="/about" element={<About/>}/>

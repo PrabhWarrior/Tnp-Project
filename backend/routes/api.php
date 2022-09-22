@@ -9,3 +9,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/create-post', [PostController::class,'create'] );
+Route::get('/post', [PostController::class,'listOfPosts'] ); 
+Route::get('/post/{post_id}', [PostController::class,'Post'] ); 
+Route::delete('/delete/{post_id}', [PostController::class,'deletePost'] ); 
