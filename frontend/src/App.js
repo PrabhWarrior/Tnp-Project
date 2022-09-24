@@ -6,6 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import Post from './components/Post';
+import Edit from "./components/Edit";
 
 function App() {
   const [display, setDisplay] = useState('hidden');
@@ -26,16 +27,17 @@ function App() {
           <Route exact path="/" element={<Home/>}/>
         </Routes>
       <Routes>
-          <Route exact path='/post/:id' element={<Post/>}/>
+          <Route exact path='/post/:post_id' element={<Post/>}/>
         </Routes>
       <Routes>
           <Route exact path="/about" element={<About/>}/>
         </Routes>
       <Routes>
-          <Route exact path="/contact" element={<Contact heading="Enter your query below:" message="Your response has been Submitted!" display={display} Display={Display} />
-}/>
-
+          <Route exact path="/edit/:post_id" element={<Edit/>}/>
         </Routes>
+      <Routes>
+          <Route exact path="/contact" element={<Contact heading="Enter your query below:" message="Your response has been Submitted!" display={display} Display={Display} />
+}/>  </Routes>
     </Router>
   );
 }

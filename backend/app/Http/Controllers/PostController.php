@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         // $posts= Post::all();
         // $posts->sortByDesc("post_id");
-        return $posts = Post::orderBy('post_id', 'DESC')->get();
+        return $posts = Post::orderBy('updated_at', 'ASC')->get();
 
     }
 
@@ -37,8 +37,18 @@ class PostController extends Controller
         }
     }
 
-    function Post($id)
+    function Post($post_id)
     {
-        return $post = Post::where('post_id',$id)->get();
+        return $post = Post::where('post_id',$post_id)->get();
+    }
+
+    function editPost($post_id,Request $req)
+    {
+        $post = Post::find($post_id);
+        $post->title = $req->input('title');
+        $post->postText = $req->input('postText');
+        $post->username = $req->input('username');
+        $post->save();
+        return $post;
     }
 }
